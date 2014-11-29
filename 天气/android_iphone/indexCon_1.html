@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/ui-box.css">
+	<link rel="stylesheet" href="css/project/style.css">
+	<link rel="stylesheet" href="index_content/css/main.css">
+    <script src="js/zy_control.js"></script>
+    <script src="js/zy_click.js"></script>
+    <script src="js/zy_tmpl.js"></script>
+	<script src="js/main.js"></script>
+	<script src='js/zy_slide.js'></script>
+	<script src='js/jquery-2.1.1.min.js'></script>
+</head>
+<body class="um-vp c-wh2" ontouchstart>
+	<div class="ub ub-ver">
+		<div id="qaList">
+		</div>
+	</div>
+</body>
+<script>
+zy_init();
+window.uexOnload=function(type){
+	if(!type){
+		uexWindow.setBounce("1");
+		uexWindow.showBounceView("0", "rgba(255,255,255,0)", "0");
+        uexWindow.showBounceView("1", "rgba(255,255,255,0)", "0");
+	}
+	newsCarousel();
+	newsList();
+}
+var namearr = [];
+function newsCarousel(){
+}
+
+
+
+//新闻列表
+function newsList(){
+	var arrData = [{"_id":"54776b65ccdc870444031b6c","content":"阿三地方的萨芬感情无关啊说法噶我啊打发时光value阿斯各v","user":"小林妹妹","category":"文学","title":"晚上该吃什么呢？","__v":0,"create_date":"2014-11-27T18:20:21.046Z"},{"_id":"54776e76ccdc870444031b6d","content":"阿三地方题外话分工界面电脑的小姑娘穿不暖","user":"小林妹妹","category":"文学","title":"晚上该吃什么呢？","__v":0,"create_date":"2014-11-27T18:33:26.130Z"},{"_id":"54776e88ccdc870444031b6e","content":"撒个vdhfmn个烦烦烦烦烦烦几乎没法开门投入巨额小保姆的恢复软件模拟","user":"小林妹妹","category":"文学","title":"晚上该吃什么呢？","__v":0,"create_date":"2014-11-27T18:33:44.013Z"}];
+	
+	
+	var tmpl = '<div class="ub-ver ub-f1 uinn-for1 ubb b-gra4 block-list" ontouchstart="zy_touch(\'\')" >'
+				+'<div class="ub-f1 ub ub-ver li-content ">'
+				+'		<div class="ulev1 uof tx-c t-bla-qa t-bold">${title}</div>'
+				+ '	<div class="ulev-4 umar-t uh-for2-qa t-bla-qa">${content}</div>'
+				+'	</div>'
+				+'<div class="ub uinn">'
+				+'		<div class="ub ub-f1 ub-pe">'
+				+'			<div class="ub ub-f1 ub-ac umar-npic3">'
+				+'				<div class="t-gra-9c ulev-2">#${category}#</div>'
+				+'			</div>'
+				+'			<div class="ub ub-f1 ub-ac umar-npic3">'
+				+'				<div class="t-gra-9c ulev-2 ub-f1 tx-r">4人回答</div>'
+				+'			</div>'
+				+'		</div>'
+				+'</div>'
+				+'</div>';
+	
+	            var s = zy_tmpl(tmpl, arrData, zy_tmpl_count(arrData), tmpleCb);
+			var d = document.createElement('DIV');
+	  		d.innerHTML=s;
+			$$('qaList').appendChild(d);
+
+			
+//	$.get(
+//        'http://localhost:3000/qa/all',
+//        function(arrData){
+//            //获取内容
+//            var s = zy_tmpl(tmpl, arrData, zy_tmpl_count(arrData), tmpleCb);
+//			var d = document.createElement('DIV');
+//	  		d.innerHTML=s;
+//			$$('qaList').appendChild(d);
+//        }
+//    );
+	
+	
+}
+
+function tmpleCb(a, b){
+	var str = '';
+	switch(b[1]){
+		case "mark":
+		var arr1 = a['mark'];
+		if(arr1[0]==0){
+			str += '<div class="ulev-4 t-gra-b1 tx-r umar-t">'+ arr1[1].posts+'跟帖</div>'
+		}else{
+			str += '<div class="ub ub-pe umar-t">'
+					+'	<div class="ulev-2 t-wh uinn-for2 c-red-for3 uc-a-news ub-pe">专题</div>'
+					+'</div>'
+		}
+		return str;
+	}	
+}
+
+</script>
+</html>
