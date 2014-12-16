@@ -29,21 +29,21 @@ window.uexOnload=function(type){
 		uexWindow.showBounceView("0", "rgba(255,255,255,0)", "0");
         uexWindow.showBounceView("1", "rgba(255,255,255,0)", "0");
 	}
-	newsCarousel();
-	newsList();
-}
-var namearr = [];
-function newsCarousel(){
 }
 
+$(document).ready(function() { 
+	newsList();
+}); 
+
+var namearr = [];
 
 
 //新闻列表
 function newsList(){
-	var arrData = [{"_id":"547357b41cb9bb880d560269","content":"国务院总理李克强21日主持召开国务院常务会议，决定出台严格控制新设行政许可的...","user":"小林妹妹","__v":0,"create_date":"2014-11-24T16:07:16.904Z"},{"_id":"547357b61cb9bb880d56026a","content":"国务院总理李克强21日主持召开国务院常务会议，决定出台严格控制新设行政许可的...","user":"小林妹妹","__v":0,"create_date":"2014-11-24T16:07:18.090Z"},{"_id":"547357d21cb9bb880d56026b","content":"国务院总理李克强21日主持召开国务院常务会议，决定出台严格控制新设行政许可的...","user":"小林妹妹","__v":0,"create_date":"2014-11-24T16:07:46.233Z"},{"_id":"547357d21cb9bb880d56026c","content":"国务院总理李克强21日主持召开国务院常务会议，决定出台严格控制新设行政许可的...","user":"小林妹妹","__v":0,"create_date":"2014-11-24T16:07:46.874Z"},{"_id":"547357d41cb9bb880d56026d","content":"国务院总理李克强21日主持召开国务院常务会议，决定出台严格控制新设行政许可的...","user":"小林妹妹","__v":0,"create_date":"2014-11-24T16:07:48.098Z"},{"_id":"547602843aafe0e81e94f4e2","__v":0,"create_date":"2014-11-26T16:40:36.846Z"},{"_id":"547603043aafe0e81e94f4e3","content":"嘻嘻嘻","__v":0,"create_date":"2014-11-26T16:42:44.913Z"},{"_id":"5476140a3aafe0e81e94f4e4","content":"阿三地方啊fads","user":"小林妹妹","__v":0,"create_date":"2014-11-26T17:55:22.746Z"},{"_id":"5476145d3aafe0e81e94f4e5","content":"阿三地方是阿三地方阿三地方啊手动阀阿斯顿vgasdf阿三地方温热儿和饥饿时都好几年哟普4536537467864784874784625虚报现在","user":"小林妹妹","__v":0,"create_date":"2014-11-26T17:56:45.956Z"}];
+//	var arrData = [{"_id":"547357b41cb9bb880d560269","content":"国务院总理李克强21日主持召开国务院常务会议，决定出台严格控制新设行政许可的...","user":"小林妹妹","__v":0,"create_date":"2014-11-24T16:07:16.904Z"},{"_id":"547357b61cb9bb880d56026a","content":"国务院总理李克强21日主持召开国务院常务会议，决定出台严格控制新设行政许可的...","user":"小林妹妹","__v":0,"create_date":"2014-11-24T16:07:18.090Z"},{"_id":"547357d21cb9bb880d56026b","content":"国务院总理李克强21日主持召开国务院常务会议，决定出台严格控制新设行政许可的...","user":"小林妹妹","__v":0,"create_date":"2014-11-24T16:07:46.233Z"},{"_id":"547357d21cb9bb880d56026c","content":"国务院总理李克强21日主持召开国务院常务会议，决定出台严格控制新设行政许可的...","user":"小林妹妹","__v":0,"create_date":"2014-11-24T16:07:46.874Z"},{"_id":"547357d41cb9bb880d56026d","content":"国务院总理李克强21日主持召开国务院常务会议，决定出台严格控制新设行政许可的...","user":"小林妹妹","__v":0,"create_date":"2014-11-24T16:07:48.098Z"},{"_id":"547602843aafe0e81e94f4e2","__v":0,"create_date":"2014-11-26T16:40:36.846Z"},{"_id":"547603043aafe0e81e94f4e3","content":"嘻嘻嘻","__v":0,"create_date":"2014-11-26T16:42:44.913Z"},{"_id":"5476140a3aafe0e81e94f4e4","content":"阿三地方啊fads","user":"小林妹妹","__v":0,"create_date":"2014-11-26T17:55:22.746Z"},{"_id":"5476145d3aafe0e81e94f4e5","content":"阿三地方是阿三地方阿三地方啊手动阀阿斯顿vgasdf阿三地方温热儿和饥饿时都好几年哟普4536537467864784874784625虚报现在","user":"小林妹妹","__v":0,"create_date":"2014-11-26T17:56:45.956Z"}];
 	
 	var tmpl = '<div class="ub-ver ub-f1 uinn-for1 ubb b-gra4 block-list" ontouchstart="zy_touch(\'\')" >'
-				+'<div class="ub-f1 ub ub-ver li-content">'
+				+'<div class="ub-f1 ub ub-ver li-content" onclick="openNewWin(\'commnet\',\'comment.html\',5);">'
 				+'		<div class="ulev-4 t-gra-b1 ulh-for uh-for2 uof">${content}</div>'
 				+ '	<div class="ulev-4 t-gra-b1 tx-r umar-t">${user}</div>'
 				+ '	<div class="ulev-4 t-gra-b1 tx-r umar-t">${create_date}</div>'
@@ -69,21 +69,21 @@ function newsList(){
 				+'		</div>'
 				+'</div>'
 				+'</div>';
-	  var s = zy_tmpl(tmpl, arrData, zy_tmpl_count(arrData), tmpleCb);
-			var d = document.createElement('DIV');
-	  		d.innerHTML=s;
-			$$('newsList').appendChild(d);
-				
-//	$.get(
-//        'http://localhost:3000/say/all',
-//        function(arrData){
-//            //获取内容
-//            var s = zy_tmpl(tmpl, arrData, zy_tmpl_count(arrData), tmpleCb);
+//	  var s = zy_tmpl(tmpl, arrData, zy_tmpl_count(arrData), tmpleCb);
 //			var d = document.createElement('DIV');
 //	  		d.innerHTML=s;
 //			$$('newsList').appendChild(d);
-//        }
-//    );
+				
+	$.get(
+        'http://localhost:18080/say/all',
+        function(arrData){
+            //获取内容
+            var s = zy_tmpl(tmpl, arrData, zy_tmpl_count(arrData), tmpleCb);
+			var d = document.createElement('DIV');
+	  		d.innerHTML=s;
+			$$('newsList').appendChild(d);
+        }
+    );
 	
 	
 }

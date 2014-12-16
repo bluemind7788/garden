@@ -3,7 +3,8 @@
 <head>
     <title></title>
     <meta charset="utf-8">
-    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">    <link rel="stylesheet" href="css/project/ui-res-v3.css">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/project/ui-res-v3.css">
     <link rel="stylesheet" href="css/project/ui-color-v3.css">
     <link rel="stylesheet" href="css/project/ui-btn-v3.css">
 
@@ -15,6 +16,7 @@
     <script src="js/zy_control.js"></script>
     <script src="js/zy_click.js"></script>
 	<script src="js/main.js"></script>
+	<script src='js/jquery-2.1.1.min.js'></script>
 </head>
 <body class="um-vp c-wh" ontouchstart>
     <div id="page_0" class="up ub ub-ver" tabindex="0">
@@ -24,16 +26,16 @@
             	<div class="umw4 ub ub-ac ub-pc" ontouchstart="zy_touch()" onclick="">
             	</div>
                 <h1 class="ut ub-f1 ulev-3 ut-s tx-c" tabindex="0">天父花园</h1>
-				<div class="umw4 ub ub-ac ub-pc" ontouchstart="zy_touch()" onclick="">
- 					<div class="t-btn-ds2 ub-img uwh-tBtn"></div>
+				<div class="umw4 ub ub-ac ub-pc" ontouchstart="zy_touch()" onclick="onRefresh(0)">
+ 					<div class="bt-icon25 ub-img uwh-tBtn"></div>
             	</div>
             </div>
 			<div class="uhide">
 	        	<div class="umw4 ub ub-ac ub-pc" ontouchstart="zy_touch()" onclick="">
             	</div>
                 <h1 class="ut ub-f1 ulev-3 ut-s tx-c" tabindex="0">问答</h1>
-				<div class="umw4 ub ub-ac ub-pc" ontouchstart="zy_touch()" onclick="">
- 					<div class="t-btn-ds2 ub-img uwh-tBtn"></div>
+				<div class="umw4 ub ub-ac ub-pc" ontouchstart="zy_touch()" onclick="onRefresh(1)">
+ 					<div class="bt-icon25 ub-img uwh-tBtn" id="refreshBtn"></div>
             	</div>
 	        </div>
 			<div class="uhide">
@@ -76,7 +78,7 @@
 			 </div>
 			 <div class="pos_re ub ub-f1">
 				 <div ontouchstart="zy_touch('f-btn-act')" 
-				 		onclick="openNewWin('news_photoList','news_photoList.html');" class="ub-f1 ub ub-ver tab-act">
+				 		onclick="openNewWin('posttype_sel','posttype_sel.html',5);" class="ub-f1 ub ub-ver tab-act">
 					 <div class="ub-f1 ub-img5 bt-icon27 ub-img c-org umar-a"></div>
                  </div>
 			 </div>
@@ -110,6 +112,10 @@ window.uexOnload = function(type){
 	window.onorientationchange=window.onresize=function(){
 		zy_resize("content",0,$$("header").offsetHeight);				
 	}
+}
+
+function onRefresh(idx) {
+	openCon(idx);
 }
 
 function openCon(idx){

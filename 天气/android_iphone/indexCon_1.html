@@ -29,18 +29,17 @@ window.uexOnload=function(type){
 		uexWindow.showBounceView("0", "rgba(255,255,255,0)", "0");
         uexWindow.showBounceView("1", "rgba(255,255,255,0)", "0");
 	}
-	newsCarousel();
 	newsList();
 }
+
+$(document).ready(function() { 
+	newsList();
+}); 
 var namearr = [];
-function newsCarousel(){
-}
-
-
 
 //新闻列表
 function newsList(){
-	var arrData = [{"_id":"54776b65ccdc870444031b6c","content":"阿三地方的萨芬感情无关啊说法噶我啊打发时光value阿斯各v","user":"小林妹妹","category":"文学","title":"晚上该吃什么呢？","__v":0,"create_date":"2014-11-27T18:20:21.046Z"},{"_id":"54776e76ccdc870444031b6d","content":"阿三地方题外话分工界面电脑的小姑娘穿不暖","user":"小林妹妹","category":"文学","title":"晚上该吃什么呢？","__v":0,"create_date":"2014-11-27T18:33:26.130Z"},{"_id":"54776e88ccdc870444031b6e","content":"撒个vdhfmn个烦烦烦烦烦烦几乎没法开门投入巨额小保姆的恢复软件模拟","user":"小林妹妹","category":"文学","title":"晚上该吃什么呢？","__v":0,"create_date":"2014-11-27T18:33:44.013Z"}];
+//	var arrData = [{"_id":"54776b65ccdc870444031b6c","content":"阿三地方的萨芬感情无关啊说法噶我啊打发时光value阿斯各v","user":"小林妹妹","category":"文学","title":"晚上该吃什么呢？","__v":0,"create_date":"2014-11-27T18:20:21.046Z"},{"_id":"54776e76ccdc870444031b6d","content":"阿三地方题外话分工界面电脑的小姑娘穿不暖","user":"小林妹妹","category":"文学","title":"晚上该吃什么呢？","__v":0,"create_date":"2014-11-27T18:33:26.130Z"},{"_id":"54776e88ccdc870444031b6e","content":"撒个vdhfmn个烦烦烦烦烦烦几乎没法开门投入巨额小保姆的恢复软件模拟","user":"小林妹妹","category":"文学","title":"晚上该吃什么呢？","__v":0,"create_date":"2014-11-27T18:33:44.013Z"}];
 	
 	
 	var tmpl = '<div class="ub-ver ub-f1 uinn-for1 ubb b-gra4 block-list" ontouchstart="zy_touch(\'\')" >'
@@ -60,22 +59,22 @@ function newsList(){
 				+'</div>'
 				+'</div>';
 	
-	            var s = zy_tmpl(tmpl, arrData, zy_tmpl_count(arrData), tmpleCb);
-			var d = document.createElement('DIV');
-	  		d.innerHTML=s;
-			$$('qaList').appendChild(d);
-
-			
-//	$.get(
-//        'http://localhost:3000/qa/all',
-//        function(arrData){
-//            //获取内容
-//            var s = zy_tmpl(tmpl, arrData, zy_tmpl_count(arrData), tmpleCb);
+//	            var s = zy_tmpl(tmpl, arrData, zy_tmpl_count(arrData), tmpleCb);
 //			var d = document.createElement('DIV');
 //	  		d.innerHTML=s;
 //			$$('qaList').appendChild(d);
-//        }
-//    );
+
+			
+	$.get(
+        'http://localhost:18080/qa/all',
+        function(arrData){
+            //获取内容
+            var s = zy_tmpl(tmpl, arrData, zy_tmpl_count(arrData), tmpleCb);
+			var d = document.createElement('DIV');
+	  		d.innerHTML=s;
+			$$('qaList').appendChild(d);
+        }
+    );
 	
 	
 }

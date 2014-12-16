@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<widget widgetId="" pid="" appId="11368838" channelCode="000" version="00.00.0000" viewmode="application" width="320" height="480" sreensize="4.5">
+<widget widgetId="" pid="" appId="11368845" channelCode="000" version="00.00.0000" viewmode="application" width="320" height="480" sreensize="4.5">
 	
-	<name>天气</name>
+	<name>新闻</name>
 	<description></description>
 	<author email=""> </author>
 	<icon src="icon.png" />
