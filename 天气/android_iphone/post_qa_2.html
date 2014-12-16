@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/project/ui-res-v3.css">
+        <link rel="stylesheet" href="css/project/ui-input-v3.css">
+        <link rel="stylesheet" href="css/project/ui-color-v3.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/project/style.css">
+        <link rel="stylesheet" href="post_say/css/main.css">
+        <script src="js/zy_control.js">
+        </script>
+        <script src="js/zy_click.js">
+        </script>
+        <script src="js/main.js">
+        </script>
+        <script src='js/jquery-2.1.1.min.js'>
+        </script>
+    </head>
+    <body class="um-vp c-wh2" ontouchstart>
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+            <!--header开始-->
+            <div id="header" class="ub ub-ver">
+                <div id="" class="uh c-gra1 ub">
+                    <div class="umw3 ub ub-ac ub-pc" ontouchstart="zy_touch('')" onclick="winClose();">
+                        <div class="uwh-tBtn ub-img t-btn-a1">
+                        </div>
+                    </div>
+                    <div class="ut ub-f1 ulev0 ut-s tx-c  t-gra" tabindex="0">选择问题分类</div>
+                    <div class="umw3 ub ub-ac ub-pc" ontouchstart="zy_touch('')" onclick="onPost();">
+                        <div class="uwh-tBtn umw3 ub-img t-btn-hf1 t-wh" style="background: #00CC99; margin: 0.5em; text-align: center;
+ line-height: 1.75em;
+ font-size: 0.75em;">提交</div>
+                    </div>
+                </div>
+            </div>
+            <!--header结束-->
+            <!--复选框开始-->
+<div class="uc-a1 uba b-gra" id="catsChooser">
+    <input type="checkbox" name="che1" class="uhide" checked="checked" value="文学">
+    <div onclick="zy_for(event)" ontouchstart="zy_touch('btn-act')" class="ub uc-t1 ubb c-gra b-gra  t-bla uinn5 ">
+        <div class="ub-f1 ut-s tx-l">文学</div>
+        <div class="che-icon ub-img umw1"></div>
+    </div>
+    
+    <input type="checkbox" name="che2" class="uhide" value="生活">
+    <div onclick="zy_for(event)" ontouchstart="zy_touch('btn-act')" class="ub ubb c-gra b-gra  t-bla uinn5">
+        <div class="ub-f1  ut-s tx-l">生活</div>
+        <div class="che-icon ub-img umw1"></div>
+    </div>
+    
+    <input type="checkbox" name="che3" class="uhide" value="科学">
+    <div onclick="zy_for(event)" ontouchstart="zy_touch('btn-act')" class="ub uc-b1 c-gra t-bla uinn5">
+        <div class="ub-f1  ut-s tx-l">科学</div>
+        <div class="che-icon ub-img umw1"></div>
+    </div>
+</div>
+<!--复选框结束-->
+
+
+        </div>
+    </body>
+    <script>
+        zy_init();
+        function onPost(){
+            var postContent = getLocVal('postContent');
+			debugger;
+			var cats = '';
+            $("#catsChooser input[type=checkbox]:checked").each(function(index, ele) {
+				cats = cats +',' + ele.value;
+			});
+			if(cats) {
+				cats = cats.substr(1);
+			}
+				
+            $.ajax({
+                type: "POST",
+                url: 'http://localhost:18080/qa/add',
+                data: {
+                    content: postContent,
+                    user: getLocVal('user'),
+                    category: cats,
+                    title: postContent
+                },
+                success: function(data, textStatus){
+                    if (data.success) {
+						openNewWin('index','index.html');
+						uescript('index', 'onRefresh(1)');
+                    }
+                    else {
+                        $toast("失败");
+                    }
+                }
+            });
+            
+        }
+    </script>
+</html>

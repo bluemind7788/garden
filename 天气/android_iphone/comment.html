@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/project/style.css">
+		<link rel="stylesheet" href="comment/css/main.css">
+        <script src="js/zy_control.js"></script>
+        <script src="js/zy_click.js"></script>
+		<script src="js/main.js"></script>
+    </head>
+    <body class="um-vp c-wh1" ontouchstart>
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+            <!--header开始-->
+			<div id="header" class="ub ub-ver">
+	            <div id="" class="uh c-blu t-wh ub">
+	            	<div class="umw3 ub ub-ac ub-pc" ontouchstart="zy_touch('')" onclick="winClose();">
+	                	<div class="uwh-tBtn ub-img t-btn-a1"></div>
+	            	</div>
+	                <h1 class="ut ub-f1 ulev0 ut-s tx-c" tabindex="0">评论</h1>
+					<div class="umw3 ub " ontouchstart="zy_touch('')">
+	                	<div class="ub-img"></div>
+	            	</div>
+	            </div>
+			</div>
+            <!--header结束--><!--content开始-->
+			<div class="ub ub-f1 c-wh1 ub-ver">
+	            <div id="content" class="ub ub-f1 c-wh1 ub-ver ub-fh ub-fv">
+	            </div>
+				<div id="content-pop" class="ub ub-f1 c-wh1 ub-ver ub-fh ub-fv" style="position:absolute; left:0;top:0;">
+				</div>
+			</div>
+            <!--content结束--><!--footer开始-->
+            <div id="footer" class="ub c-wh">
+            	<input  type="text" class="ulev-app1 uba b-gra4 uc-a1 ub ub-f1 uinn umar-a t-gra"></input>
+				<div class="ub-f1 t-blu umar-a uinn" style="border: solid 1px blue; text-align:center;">发表</div>
+            </div>
+
+            <!--footer结束-->
+        </div>
+	</body>
+<script>
+zy_init();
+window.uexOnload = function(type){
+    if (!type) {
+        zy_con("content", "comment_content.html", 0, $$("header").offsetHeight);
+    }
+	window.onorientationchange=window.onresize=function(){
+		zy_resize("content",0,$$("header").offsetHeight);				
+	}
+}
+function common(){
+		var s=window.getComputedStyle(document.body,null);
+		var x = 0;
+		var y = 0;
+		uexWindow.openPopover("common","0","common.html","",int(x),int(y),int(s.width),int(s.height),int(s.fontSize),"0");
+}
+function closepop(){
+	uexWindow.closePopover("common");
+}
+</script>
+</html>

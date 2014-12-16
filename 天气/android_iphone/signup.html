@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">    <link rel="stylesheet" href="css/project/ui-res-v3.css">
+    <link rel="stylesheet" href="css/project/ui-input-v3.css">
+    <link rel="stylesheet" href="css/project/ui-color-v3.css">
+
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/project/style.css">
+		<link rel="stylesheet" href="news_photoList/css/main.css">
+        <script src="js/zy_control.js"></script>
+        <script src="js/zy_click.js"></script>
+		<script src="js/main.js"></script>
+		<script src='js/jquery-2.1.1.min.js'></script>
+    </head>
+    <body class="um-vp c-wh2" ontouchstart>
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+            <!--header开始-->
+			<div id="header" class="ub ub-ver">
+	            <div id="" class="uh c-blu t-wh ub">
+	            	<div class="umw3 ub ub-ac ub-pc" ontouchstart="zy_touch('')" onclick="winClose();">
+	                	<div class="uwh-tBtn ub-img t-btn-a1"></div>
+	            	</div>
+	                <h1 class="ut ub-f1 ulev0 ut-s tx-c" tabindex="0">注册</h1>
+					<div class="umw3 ub ub-ac ub-pc" ontouchstart="zy_touch('')">
+	        		</div>
+					
+	            </div>
+			</div>
+            <!--header结束--><!--content开始-->
+                <!--文本输入开始-->
+				<!--文本输入开始-->
+		<div class="uinn">
+		    <div class="ub c-wh ubb b-gra">
+		        <div class="uinn inp_name ub-img"></div>
+		        <div class="ub-f1 uinn ">
+		            <div class="c-wh uinput uinn4">
+		                <input placeholder="手机/邮箱/用户名" type="text" class="" id="username">
+		            </div>
+		        </div>
+		    </div>
+		    <div class="ub c-wh ubb b-gra">
+		        <div class="uinn inp_pas ub-img"></div>
+		        <div class="ub-f1 uinn ">
+		            <div class="c-wh uinput uinn4">
+		                <input placeholder="" type="password" class="" id="password">
+		            </div>
+		        </div>
+		    </div>        
+		</div>
+		<!--按钮开始-->
+		<div ontouchstart="zy_touch('btn-act')" class="btn uba b-org uinn5 c-org uc-a t-wh umar-a tx-c" onclick="onSignup();">注册</div>
+		<!--按钮结束-->
+        </div>
+    </body>
+<script>
+zy_init();
+function onSignup() {
+	var username = $("#username").val();
+	var password = $("#password").val();
+	
+    $.ajax({
+        type: "POST",
+        url: 'http://localhost:18080/user/signup',
+        data:  {
+            name: username,
+			password:password
+        },
+        success: function(data, textStatus){
+            if (data.rsl == 0) {
+               alert("用户名已经存在");
+            } else if(data.rsl == 1) {
+                openNewWin('index','index.html');
+            }
+        }
+    });
+}
+</script>
+</html>

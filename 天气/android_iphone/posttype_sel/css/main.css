@@ -1,0 +1,57 @@
+.ctn-btm-half {
+    height: 50%;
+    width: 100%;
+    position: relative;
+    top: 50%;
+}
+
+.w3 {
+    float: left;
+    width: 33%;
+}
+
+.btn-post {
+    height: 2.5em;
+    width: 2.5em;
+    background: blue;
+    -webkit-border-radius: 2em;
+    border-radius: 2em;
+}
+
+.hor-center {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.txt-center-gray-small {
+    text-align: center;
+	color:#666666;
+	font-size:0.75em;
+	margin:0.5em
+}
+
+.bg-c1 {
+    background: #FF0099
+}
+
+.bg-c2 {
+    background: #FF99CC
+}
+
+.bg-c3 {
+    background: #FFCC00
+}
+
+.btm-container {
+    position: absolute;
+    bottom: 0;
+    background: white;
+    height: 2em;
+    width: 100%
+}
+
+.btm-close {
+    color: red;
+    text-align: center;
+    font-size: 1.5em;
+}

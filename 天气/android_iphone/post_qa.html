@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/project/ui-res-v3.css">
+        <link rel="stylesheet" href="css/project/ui-input-v3.css">
+        <link rel="stylesheet" href="css/project/ui-color-v3.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/project/style.css">
+        <link rel="stylesheet" href="post_say/css/main.css">
+        <script src="js/zy_control.js">
+        </script>
+        <script src="js/zy_click.js">
+        </script>
+        <script src="js/main.js">
+        </script>
+        <script src='js/jquery-2.1.1.min.js'>
+        </script>
+    </head>
+    <body class="um-vp c-wh2" ontouchstart>
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+            <!--header开始-->
+            <div id="header" class="ub ub-ver">
+                <div id="" class="uh c-gra1 ub">
+                    <div class="umw3 ub ub-ac ub-pc" ontouchstart="zy_touch('')" onclick="winClose();">
+                        <div class="uwh-tBtn ub-img t-btn-a1">
+                        </div>
+                    </div>
+                    <div class="ut ub-f1 ulev0 ut-s tx-c  t-gra" tabindex="0">描述您的问题</div>
+                    <div class="umw3 ub ub-ac ub-pc" ontouchstart="zy_touch('')" onclick="">
+                        <div class="uwh-tBtn umw3 ub-img t-btn-hf1 t-wh" style="background: #00CC99; margin: 0.5em; text-align: center;
+ line-height: 1.75em;
+ font-size: 0.75em;" onclick="onNext()">下一步</div>
+                    </div>
+                </div>
+            </div>
+            <!--header结束-->
+            <!--content开始-->
+            <!--文本输入开始-->
+            <div class="c-wh b-gra uinput uinn4">
+                <textarea id="postTxt" placeholder="描述您的问题..." name="textarea-0" class="umh10"></textarea>
+            </div>
+            <!--文本输入结束-->
+        </div>
+    </body>
+    <script>
+        zy_init();
+        function onNext(){
+			var postContent = $("#postTxt").val();
+			setLocVal('postContent', postContent);
+			openNewWin('post_qa_2','post_qa_2.html',5);
+        }
+    </script>
+</html>

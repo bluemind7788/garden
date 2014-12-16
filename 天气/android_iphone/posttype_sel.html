@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/project/ui-res-v3.css">
+        <link rel="stylesheet" href="css/project/ui-input-v3.css">
+        <link rel="stylesheet" href="css/project/ui-color-v3.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/project/style.css">
+        <link rel="stylesheet" href="posttype_sel/css/main.css">
+        <script src="js/zy_control.js">
+        </script>
+        <script src="js/zy_click.js">
+        </script>
+        <script src="js/main.js">
+        </script>
+        <script src='js/jquery-2.1.1.min.js'>
+        </script>
+    </head>
+    <body class="um-vp c-wh2" ontouchstart>
+        <div class="ctn-btm-half">
+            <div class="w3">
+                <!--按钮开始-->
+                <div class="btn uinn uc-a bt-icon31 btn-post hor-center bg-c1" onclick="winClose();openNewWin('post_say','post_say.html',5);">
+                </div>
+                <!--按钮结束-->
+                <div class="txt-center-gray-small">
+                    心情
+                </div>
+            </div>
+            <div class="w3">
+                <!--按钮开始-->
+                <div class="btn uinn uc-a bt-icon6 btn-post hor-center bg-c2" onclick="winClose();openNewWin('post_qa','post_qa.html',5);">
+                </div>
+                <!--按钮结束-->
+                <div class="txt-center-gray-small">
+                    问题
+                </div>
+            </div>
+			<div class="w3">
+                <!--按钮开始-->
+                <div class="btn uinn uc-a bt-icon6 btn-post hor-center bg-c3">
+                </div>
+                <!--按钮结束-->
+                <div class="txt-center-gray-small">
+                    更多
+                </div>
+            </div>
+            <div class="btm-container">
+                <div class="btm-close" onclick="winClose();">
+                    x
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        zy_init();
+        function onPost(){
+            var postContent = $("#postTxt").val();
+            
+            $.ajax({
+                type: "POST",
+                url: 'http://localhost:18080/qa/add',
+                data: {
+                    content: postContent,
+                    user: localStorage.getItem('user'),
+                    category: "文学",
+                    title: "晚上该吃什么呢？"
+                },
+                success: function(data, textStatus){
+                    if (data.success) {
+                        alert(11);
+                    }
+                    else {
+                        alert(22);
+                    }
+                }
+            });
+            
+        }
+    </script>
+</html>
